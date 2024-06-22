@@ -1,11 +1,12 @@
 import { Box, Flex, Heading, Button, Link, Icon } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { MdLogout } from 'react-icons/md';
+import AuthButton from './Auth/AuthButton';
 
 function Header() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem('token')
     navigate('/login');
   };
 
@@ -34,14 +35,7 @@ function Header() {
           >
             Playlists
           </Link>
-          <Button
-            colorScheme="blue"
-            ml={4}
-            onClick={handleLogout}
-            leftIcon={<Icon as={MdLogout} />}
-          >
-            Logout
-          </Button>
+          <AuthButton />
         </Flex>
       </Flex>
     </Box>
