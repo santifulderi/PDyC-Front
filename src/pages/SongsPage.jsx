@@ -62,11 +62,11 @@ function SongsPage() {
             _focus={{ bg: 'gray.700', color: 'white' }}
           >
             <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Rock">Rock</option>
-            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Techno">Pop</option>
-            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Pop">Jazz</option>
-            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Jazz">Rock</option>
-            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Folk">Pop</option>
-            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Classical">Jazz</option>
+            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Techno">Techno</option>
+            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Pop">Pop</option>
+            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Jazz">Jazz</option>
+            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Folk">Folk</option>
+            <option style={{ backgroundColor: 'gray.700', color: 'black' }} value="Classical">Classical</option>
           </Select>
           <Input 
             placeholder="Filter by author" 
@@ -83,6 +83,29 @@ function SongsPage() {
           <Button onClick={handleClearFilters} colorScheme="gray">Clear Filters</Button>
         </Flex>
       </Flex>
+      <Box 
+        maxH="600px" 
+        overflowY="auto" 
+        p={2} 
+        borderRadius="md" 
+        border="1px solid" 
+        borderColor="gray.700"
+        css={{
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#1A202C',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#4A5568',
+            borderRadius: '24px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: '#2D3748',
+          },
+        }}
+      >
       <List spacing={3}>
         {filteredSongs.map((song) => (
           <ListItem key={song.id} bg="gray.800" p={4} borderRadius="md" _hover={{ bg: 'gray.700' }}>
@@ -94,6 +117,7 @@ function SongsPage() {
           </ListItem>
         ))}
       </List>
+      </Box>
     </Box>
   );
 }
