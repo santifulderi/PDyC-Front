@@ -33,6 +33,18 @@ function PlaylistsPage() {
   }, []);
 
   const handleAddPlaylist = () => {
+    if (!newPlaylistName.trim()) {
+      toast({
+        title: "Invalid Playlist Name",
+        description: "The playlist name cannot be empty.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top"
+      });
+      return; // Salir de la función si el nombre de la playlist está vacío
+    }
+    
     setIsLoading(true);
 
     let config = {
