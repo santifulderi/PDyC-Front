@@ -11,10 +11,20 @@ function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      // Simulating an API call for login
-      // Replace this with your actual API call
-      await axios.post('/api/login', { email, password });
-      navigate('/');
+      const response = await axios.post("http://localhost:8080/login", {
+        email,
+        password,
+      });
+
+      // Accede al encabezado Authorization de la respuesta
+      const authToken = response.headers["authorization"];
+
+      if (authToken) {
+        // Almacena token en localStorage
+        localStorage.setItem("token", authToken);
+      }
+
+      navigate('/my-playlists');
       toast({
         title: 'Login successful.',
         description: "Welcome back!",
